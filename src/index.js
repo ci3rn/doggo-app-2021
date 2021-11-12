@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore();
 
+store.subscribe(() => { console.log(store.getState()) });
+
 const jsx = (
     <Provider store={store}>
         <App />

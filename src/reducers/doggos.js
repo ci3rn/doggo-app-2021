@@ -9,7 +9,7 @@ export default (state = doggosReducersDefaultState, action) => {
                 action.doggo
             ];
         case 'REMOVE_DOGGO': 
-            return state.filter((doggo) => doggo.name.toLowerCase() !== action.name.toLowerCase());
+            return state.filter((doggo) => doggo.id !== action.id);
         case 'EDIT_DOGGO':
             // return 
         default:

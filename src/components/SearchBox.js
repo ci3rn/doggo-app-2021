@@ -9,12 +9,9 @@ import {
   sortByName,
   sortByWeight,
 } from "../actions/filters";
-import { useState } from "react";
-import DoggoForm from "./DoggoForm";
+import { showModal } from '../actions/modals';
 
 const SearchBox = (props) => {
-  const [showDoggoModal, setShowDoggoModal] = useState(false);
-
   const handleOnSelect = (sortBy) => {
     if (sortBy === "name") {
       props.dispatch(sortByName());
@@ -25,19 +22,18 @@ const SearchBox = (props) => {
     }
   };
 
+  const handleOnClick = () => {
+    props.dispatch(showModal());
+  };
+
   const handleOnChange = (e) => {
     props.dispatch(setTextFilter(e.target.value));
   };
 
-  const showAddDoggoModal = () => {
-    setShowDoggoModal(true);
-  };
-
   return (
     <>
-      <DoggoForm action="Add" show={showDoggoModal} />
       <InputGroup className="mb-3" defaultValue="" onChange={handleOnChange}>
-        <Button variant="success" onClick={showAddDoggoModal}>
+        <Button variant="success" onClick={handleOnClick}>
           Add
         </Button>
         <FormControl
@@ -59,7 +55,7 @@ const SearchBox = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({ filters: state.filters });
+const mapStateToProps = (state) => ({ filters: state.filters});
 
 const ConnectedSearchBox = connect(mapStateToProps)(SearchBox);
 
