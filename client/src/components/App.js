@@ -8,24 +8,28 @@ import Row from "react-bootstrap/Row";
 import SearchBox from "./SearchBox";
 import ModalWindow from './ModalWindow';
 import DoggoForm from "./DoggoForm";
-import LoginButton from "./LoginButton";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import Spinner from 'react-bootstrap/Spinner';
 
 const App = ({ modals }) => {
+  const { isLoading, user } = useAuth0()
+
+  if (isLoading) return <div><Spinner animation="border" variant="success" /></div>
+
   return (
-      // create Modal component in which we will pass form as a payload for instance <Modal payload={(<DoggoForm />)} />
-      // Try to use DoggoForm for add and edit. 
     <Container>
       { modals.modal && (<ModalWindow payload={(<DoggoForm />)} />) }
       <Row><NavigationBar /></Row>
-      <Row><SearchBox /></Row>
-      <Row><DoggoList /></Row>
+      { !isLoading && user && (<>
+        <Row><SearchBox /></Row>
+        <Row><DoggoList /></Row>
+      </>) }
       <Row><Footer /></Row>
     </Container>
   );
 };
 
-const mapStateToProps = (state) => ({ modals: state.modals});
+const mapStateToProps = (state) => ({ modals: state.modals });
 
 const ConnectedApp = connect(mapStateToProps)(App);
 

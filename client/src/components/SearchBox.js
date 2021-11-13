@@ -10,8 +10,11 @@ import {
   sortByWeight,
 } from "../actions/filters";
 import { showModal } from '../actions/modals';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const SearchBox = (props) => {
+  const { isAuthenthicated } = useAuth0();
+  
   const handleOnSelect = (sortBy) => {
     if (sortBy === "name") {
       props.dispatch(sortByName());
@@ -30,9 +33,7 @@ const SearchBox = (props) => {
     props.dispatch(setTextFilter(e.target.value));
   };
 
-  return (
-    <>
-      <InputGroup className="mb-3" defaultValue="" onChange={handleOnChange}>
+  return <InputGroup className="mb-3" defaultValue="" onChange={handleOnChange}>
         <Button variant="success" onClick={handleOnClick}>
           Add
         </Button>
@@ -51,8 +52,6 @@ const SearchBox = (props) => {
           </Dropdown.Menu>
         </Dropdown>
       </InputGroup>
-    </>
-  );
 };
 
 const mapStateToProps = (state) => ({ filters: state.filters});

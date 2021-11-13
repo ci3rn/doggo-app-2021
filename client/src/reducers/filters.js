@@ -6,13 +6,25 @@ const filtersReducerDefaultState = {
 export default (state = filtersReducerDefaultState, action) => {
     switch(action.type) {
         case 'SET_TEXT_FILTER':
-            return { text: action.text };
+            return {
+                ...state,
+                text: action.text
+            };
         case 'SORT_BY_NAME':
-            return { sortBy: 'name' };
+            return {
+                ...state,
+                sortBy: 'name'
+            };
         case 'SORT_BY_AGE':
-            return { sortBy: 'age' };
+            return {
+                ...state,
+                sortBy: 'age'
+            };
         case 'SORT_BY_WEIGHT':
-            return { sortBy: 'weight' };
+            return {
+                ...state,
+                sortBy: 'weight'
+            };
         default:
             return state;
     }
