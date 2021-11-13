@@ -11,7 +11,12 @@ export default (state = doggosReducersDefaultState, action) => {
         case 'REMOVE_DOGGO': 
             return state.filter((doggo) => doggo.id !== action.id);
         case 'EDIT_DOGGO':
-            // return 
+            return state.map((doggo) => {
+                return doggo.id === action.id ? 
+                    { 
+                        ...doggo
+                    } : doggo;
+            })
         default:
             return state;
     }

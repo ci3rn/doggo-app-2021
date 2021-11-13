@@ -27,12 +27,11 @@ export const addDoggo = ({
 // REMOVE_DOGGO
 export const removeDoggo = ({ id } = {}) => ({
   type: "REMOVE_DOGGO",
-  modal: 'add',
-  id,
+  id
 });
 
 // EDIT_DOGGO
-export const editDoggo = () => ({
-  type: "EDIT_DOGGO" ,
-  modal: 'edit'
+export const editDoggo = ({ id } = {}) => ({
+  type: "EDIT_DOGGO",
+  id
 });

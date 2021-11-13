@@ -10,10 +10,8 @@ import {
   sortByWeight,
 } from "../actions/filters";
 import { showModal } from '../actions/modals';
-import { useAuth0 } from "@auth0/auth0-react";
 
 const SearchBox = (props) => {
-  const { isAuthenthicated } = useAuth0();
   
   const handleOnSelect = (sortBy) => {
     if (sortBy === "name") {
