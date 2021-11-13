@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import SearchBox from "./SearchBox";
 import ModalWindow from './ModalWindow';
 import DoggoForm from "./DoggoForm";
+import LoginButton from "./LoginButton";
 
 
 const App = ({ modals }) => {

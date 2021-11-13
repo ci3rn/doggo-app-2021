@@ -2,10 +2,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import React from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { hideModal } from "../actions/modals";
 import { addDoggo } from "../actions/doggos";
-import { useState } from "react";
 
 const DoggoForm = (props) => {
   const [imageUrl, setImageUrl] = useState("");
