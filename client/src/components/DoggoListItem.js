@@ -9,7 +9,7 @@ const DoggoListItem = ({ dispatch, doggo }) => {
         dispatch(removeDoggo(doggo));
     };
     return <Card style={{ width: "18rem", margin: "5px" }}>
-    <Card.Img variant="top" src={doggo.image.url} />
+    <Card.Img variant="top" src={doggo.image_url} />
     <Card.Body>
       <Card.Title>{doggo.name}</Card.Title>
       <ListGroup variant="flush">
@@ -19,8 +19,8 @@ const DoggoListItem = ({ dispatch, doggo }) => {
         <ListGroup.Item>
           Country: {doggo.country_code || "-"}
         </ListGroup.Item>
-        <ListGroup.Item>Height: {doggo.height.metric} cm</ListGroup.Item>
-        <ListGroup.Item>Weight: {doggo.weight.metric} kg</ListGroup.Item>
+        <ListGroup.Item>Height: {doggo.height} cm</ListGroup.Item>
+        <ListGroup.Item>Weight: {doggo.weight} kg</ListGroup.Item>
         <ListGroup.Item>Life span: {doggo.life_span}</ListGroup.Item>
         <ListGroup.Item>Temperament: {doggo.temperament}</ListGroup.Item>
         <ListGroup.Item>

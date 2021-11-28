@@ -1,6 +1,8 @@
-// const doggosReducersDefaultState = [];
-const doggosReducersDefaultState = require('../doggos.json');
+const doggosReducersDefaultState = [];
+// const doggosReducersDefaultState = require('../doggos.json');
 
+
+// export default (state = doggosReducersDefaultState, action) => {
 export default (state = doggosReducersDefaultState, action) => {
     switch(action.type) {
         case 'ADD_DOGGO':
@@ -17,6 +19,8 @@ export default (state = doggosReducersDefaultState, action) => {
                         ...doggo
                     } : doggo;
             })
+        case 'SET_DOGGOS':
+            return action.doggos;
         default:
             return state;
     }

@@ -8,7 +8,7 @@ const LoginButton = () => {
   const handleLogout = () => {
     logout();
   }
-  return <Button onClick={() => handleLogout()} variant="success">Log Out</Button>;
+  return <Button onClick={handleLogout} variant="success">Log Out</Button>;
 };
 
 export default LoginButton;

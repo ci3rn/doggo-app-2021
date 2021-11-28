@@ -2,6 +2,7 @@ import React from "react";
 import ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import App from "./components/App";
+import { startSetDoggos } from "./actions/doggos";
 import configureStore from "./store/configureStore";
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,9 +13,9 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 const store = configureStore();
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
+// store.subscribe(() => {
+//   console.log(store.getState());
+// });
 
 const jsx = (
   <Auth0Provider
@@ -28,4 +29,8 @@ const jsx = (
   </Auth0Provider>
 );
 
-ReactDom.render(jsx, document.getElementById("root"));
+ReactDom.render(<p>Loading...</p>, document.getElementById("root"));
+
+store.dispatch(startSetDoggos()).then(() => {
+  ReactDom.render(jsx, document.getElementById("root"));
+});

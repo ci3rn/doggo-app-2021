@@ -4,9 +4,9 @@ const sortByName = (a, b) => {
 
 // not always accurate, why?
 const sortByWeight = (a, b) => {
-    let regularExpression = /\d+/g;
-    const weightA = a.weight.metric.match(regularExpression) || [1000];
-    const weightB = b.weight.metric.match(regularExpression) || [1000];
+    const regularExpression = /\d+/g;
+    const weightA = a.weight.match(regularExpression) || [1000];
+    const weightB = b.weight.match(regularExpression) || [1000];
     return Number(weightA[weightA.length-1] - Number(weightB[weightB.length-1]));
 };
 

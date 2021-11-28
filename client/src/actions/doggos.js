@@ -24,6 +24,12 @@ export const addDoggo = ({
     }
 });
 
+// export const startAddDoggo = () => {
+//   return (dispatch) => {
+
+//   }
+// };
+
 // REMOVE_DOGGO
 export const removeDoggo = ({ id } = {}) => ({
   type: "REMOVE_DOGGO",
@@ -35,3 +41,20 @@ export const editDoggo = ({ id } = {}) => ({
   type: "EDIT_DOGGO",
   id
 });
+
+// SET_DOGGOS
+export const setDoggos = (doggos) => ({
+  type: 'SET_DOGGOS',
+  doggos
+});
+
+export const startSetDoggos = () => {
+  return (dispatch) => {
+    return fetch('http://localhost:5000/api/doggos')
+    .then(response => response.json()).then((doggos) => {
+      dispatch(setDoggos(doggos));
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+};
