@@ -36,6 +36,17 @@ export const removeDoggo = ({ id } = {}) => ({
   id
 });
 
+export const startRemoveDoggo = ({ id }) => {
+  return (dispatch) => {
+    return fetch(`http://localhost:5000/api/doggos/${id}`, { method: 'DELETE' })
+    .then(response => response.json()).then((doggo) => {
+      dispatch(removeDoggo(doggo));
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+}
+
 // EDIT_DOGGO
 export const editDoggo = ({ id } = {}) => ({
   type: "EDIT_DOGGO",

@@ -48,8 +48,6 @@ Doggo.getAll = (result) => {
       result(null, err);
       return;
     }
-
-    console.log("doggos: ", res);
     result(null, res);
   });
 };

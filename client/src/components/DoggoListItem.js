@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import { removeDoggo } from '../actions/doggos';
+import { startRemoveDoggo } from '../actions/doggos';
 
 const DoggoListItem = ({ dispatch, doggo }) => {
     const handleRemoveDoggo = () => {
-        dispatch(removeDoggo(doggo));
+        dispatch(startRemoveDoggo(doggo));
     };
     return <Card style={{ width: "18rem", margin: "5px" }}>
     <Card.Img variant="top" src={doggo.image_url} />
