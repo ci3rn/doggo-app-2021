@@ -1,9 +1,11 @@
 const sql = require("./db.js");
 
 const Doggo = function (doggo) {
+  this.id = doggo.id;
   this.name = doggo.name;
   this.image_url = doggo.image_url;
   this.breed_group = doggo.breed_group;
+  this.country_code = doggo.country_code;
   this.height = doggo.height;
   this.weight = doggo.weight;
   this.life_span = doggo.life_span;
@@ -11,15 +13,19 @@ const Doggo = function (doggo) {
 };
 
 Doggo.create = (doggo, result) => {
-  sql.query("INSERT INTO doggos SET ?", doggo, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
+  console.log(result);
+  sql.query(
+    "INSERT INTO doggos SET ?",
+    doggo, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      console.log("created doggos: ", { id: res.id, ...doggo });
+      result(null, { id: res.id, ...doggo });
     }
-    console.log("created doggos: ", { id: res.id, ...doggo });
-    result(null, { id: res.id, ...doggo });
-  });
+  );
 };
 
 Doggo.remove = (id, result) => {

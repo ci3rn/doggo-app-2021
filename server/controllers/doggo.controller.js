@@ -2,12 +2,24 @@ const Doggo = require("../models/doggo.model.js");
 
 // Create and Save a new Doggo
 exports.create = (req, res) => {
-  Doggo.create((err, data) => {
+  const doggo = new Doggo({
+    id : req.body.id,
+    name : req.body.name,
+    image_url : req.body.image_url,
+    breed_group : req.body.breed_group,
+    country_code : req.body.country_code,
+    height : req.body.height,
+    weight : req.body.weight,
+    life_span : req.body.life_span,
+    temperament : req.body.temperament
+  });
+  Doggo.create(doggo, (err, data) => {
     if (err) {
       res.status(500).send({
         message: err.message || "Some error occured while inserting doggo.",
       });
-    }
+    };
+    res.send(doggo);
   });
 };
 

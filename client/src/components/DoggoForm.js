@@ -5,9 +5,10 @@ import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { hideModal } from "../actions/modals";
-import { addDoggo } from "../actions/doggos";
+import { startAddDoggo } from "../actions/doggos";
+import { v4 as uuidv4 } from "uuid";
 
-const DoggoForm = (props) => {
+const DoggoForm = ({ dispatch }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [name, setName] = useState("");
   const [breedGroup, setBreedGroup] = useState("");
@@ -51,17 +52,18 @@ const DoggoForm = (props) => {
   };
 
   const handleOnClickCloseButton = () => {
-    props.dispatch(hideModal());
+    dispatch(hideModal());
   };
   
   //https://www.thepaws.net/wp-content/uploads/2019/09/warrior.jpg
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const doggo = {
-      imageUrl,
+      id: uuidv4(),
+      image_url: imageUrl,
       name,
       breed_group: breedGroup,
-      countryCode: countryCode,
+      country_code: countryCode,
       height,
       weight,
       life_span: lifeSpan,
@@ -75,8 +77,7 @@ const DoggoForm = (props) => {
       }
     });
 
-    props.dispatch(addDoggo(doggo));
-    // props.dispatch(addDoggo({}));
+    dispatch(startAddDoggo(doggo));
     handleOnClickCloseButton();
   };
   return (
