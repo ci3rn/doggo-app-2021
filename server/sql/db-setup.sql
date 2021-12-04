@@ -6,8 +6,8 @@
 -- CREATE DATABASE doggo_app;
 -- drop table doggo_app.doggos
 
-
 CREATE TABLE IF NOT EXISTS doggo_app.doggos (
+    -- id uuid PRIMARY KEY,
     id VARCHAR(37) PRIMARY KEY DEFAULT (uuid()),
     name VARCHAR(255),
     image_url VARCHAR(1000),
@@ -19,8 +19,12 @@ CREATE TABLE IF NOT EXISTS doggo_app.doggos (
     temperament VARCHAR(200)
 );
 
+select COUNT(*) from doggo_app.doggos;
+-- DELETE FROM doggo_app.doggos WHERE name = 'doggo';
+-- DELETE FROM doggo_app.doggos WHERE name is null;
+select * from doggo_app.doggos WHERE name = 'Blabladoor';
 select * from doggo_app.doggos;
-
+select * from doggo_app.doggos WHERE ID = 'ec935697-5082-11ec-8100-0242ac110002';
 -- TRUNCATE TABLE doggo_app.doggos;
 
 INSERT INTO doggo_app.doggos(name, image_url, breed_group, country_code, height, weight, life_span, temperament)
